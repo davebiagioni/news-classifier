@@ -5,6 +5,10 @@ from keras.layers.core import Dropout
 from keras.layers.embeddings import Embedding
 from keras.preprocessing import sequence
 
+def filter_top_words(lst, top_words):
+  for ix, item in enumerate(lst):
+    lst[ix] = filter(lambda x: x < top_words, item)
+  return lst
 
 def create_rnn_model_for_training(p):
   model = Sequential()
